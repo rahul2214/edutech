@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - CodeMaster | Software Training & Internships</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background: #f8fafc;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 30px;
+            margin: 20px;
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        body.scrolled .navbar {
+            top: 0;
+            margin: 0;
+            border-radius: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+        }
+
+        body.scrolled {
+            padding-top: 80px; /* Prevents content from jumping behind navbar */
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 54px;
+            width: 54px;
+            border-radius: 30px;
+        }
+        
+        .logo h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links li {
+            display: inline;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-size: 1em;
+            transition: color 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        .nav-links a:hover {
+            color: #2563eb;
+            background: #f1f5f9;
+        }
+        
+        /* Mobile Menu Button */
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        .side-nav {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #1e293b;
+    padding: 20px;
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.side-nav .close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    float: right;
+    cursor: pointer;
+}
+
+.side-nav-links {
+    list-style: none;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.side-nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+}
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 20px;
+            }
+            body.scrolled .navbar {
+                padding: 10px 20px;
+            }
+            
+            .menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 15px;
+                font-size: 1.2rem;
+            }
+            
+           
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            color: #1e293b;
+        }
+        
+        /* Header */
+        .blog-header {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .blog-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .blog-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Featured Post */
+        .featured-post {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .featured-img {
+            /* height: 400px; */
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .featured-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .featured-content .meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .featured-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .featured-content p {
+            margin-bottom: 25px;
+            color: #475569;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #dbeafe;
+            color: #1d4ed8;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+        
+        .posts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .post-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .post-img {
+            height: 200px;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .post-content {
+            padding: 25px;
+        }
+        
+        .post-content .meta {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+        
+        .post-content h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .post-content p {
+            color: #475569;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .sidebar-widget {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .widget-title {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 1.3rem;
+        }
+        
+        .category-list {
+            list-style: none;
+        }
+        
+        .category-list li {
+            margin-bottom: 10px;
+        }
+        
+        .category-list a {
+            display: flex;
+            justify-content: space-between;
+            color: #334155;
+            text-decoration: none;
+            padding: 8px 0;
+            transition: all 0.2s ease;
+        }
+        
+        .category-list a:hover {
+            color: #2563eb;
+        }
+        
+        .category-list span {
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+        
+        .recent-posts {
+            list-style: none;
+        }
+        
+        .recent-post {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .recent-post:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .recent-img {
+            width: 80px;
+            height: 60px;
+            background: #e2e8f0;
+            flex-shrink: 0;
+            border-radius: 5px;
+        }
+        
+        .recent-content h4 {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+        
+        .recent-content .meta {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+        
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag-sm {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #f1f5f9;
+            color: #334155;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .tag-sm:hover {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+        
+        /* Newsletter */
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .newsletter-form input {
+            padding: 10px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+        }
+        
+        .newsletter-form button {
+            padding: 10px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background: #1d4ed8;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 50px;
+        }
+        
+        .page-link {
+            display: inline-block;
+            padding: 8px 15px;
+            background: white;
+            color: #334155;
+            border-radius: 5px;
+            text-decoration: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+        
+        .page-link:hover, .page-link.active {
+            background: #2563eb;
+            color: white;
+        }
+        
+        @media (max-width: 992px) {
+            .featured-post {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-img {
+                height: 250px;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .blog-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .featured-content {
+                padding: 25px;
+            }
+            
+            .featured-content h2 {
+                font-size: 1.6rem;
+            }
+        }
+        /* Footer Styles */
+        footer {
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 60px 0 20px;
+            font-size: 0.95rem;
+        }
+        
+        .footer-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+        
+        .footer-heading {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: #2563eb;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            color: #2563eb;
+            transform: translateX(5px);
+        }
+        
+        .footer-contact li {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: flex-start;
+            color: #cbd5e1;
+        }
+        
+        .footer-contact i {
+            color: #2563eb;
+            margin-top: 3px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .newsletter-form input {
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            background: #334155;
+            color: white;
+        }
+        
+        .newsletter-form input::placeholder {
+            color: #94a3b8;
+        }
+        
+        .newsletter-form button {
+            padding: 12px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background: #1d4ed8;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #334155;
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #2563eb;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/image.png" alt="Katatia Classes Logo">
+            <h1>Kataria Classes</h1>
+        </div>
+        
+        <button class="menu-btn" id="menu-btn">&#9776;</button>
+        
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        
+    </nav>
+     <!-- Side Navbar -->
+     <div class="side-nav" id="side-nav">
+        <button class="close-btn" id="close-btn">&times;</button>
+        <ul class="side-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="container">
+            <h1>Kataria Blogs</h1>
+            <p>Learn about software development, career tips, and industry trends from our experts</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Featured Post -->
+        <section class="featured-post">
+            <div class="featured-img">
+                <i class="fas fa-image" style="font-size: 3rem; color: #64748b;"></i>
+            </div>
+            <div class="featured-content">
+                <span class="tag">CAREER ADVICE</span>
+                <div class="meta">
+                    <span><i class="far fa-calendar"></i> June 15, 2023</span>
+                    <span><i class="far fa-user"></i> By Priya Sharma</span>
+                </div>
+                <h2>How to Build a Strong Portfolio as a Beginner Developer</h2>
+                <p>Learn what projects to include, how to present your work, and tips to make your portfolio stand out to employers even with no professional experience.</p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </section>
+        
+        <!-- Blog Content -->
+        <div class="blog-grid">
+            <!-- Main Posts -->
+            <div class="posts-container">
+                <!-- Post 1 -->
+                <article class="post-card">
+                    <div class="post-img" style="background: #bfdbfe;">
+                        <i class="fas fa-code" style="font-size: 2rem; color: #1e40af;"></i>
+                    </div>
+                    <div class="post-content">
+                        <div class="meta">
+                            <span><i class="far fa-calendar"></i> May 28, 2023</span>
+                            <span><i class="far fa-user"></i> By Rajesh Kumar</span>
+                        </div>
+                        <h3>React vs Angular in 2023: Which Should You Learn?</h3>
+                        <p>Comparative analysis of both frameworks based on job market demand, learning curve, and real-world usage.</p>
+                        <a href="#" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Read More</a>
+                    </div>
+                </article>
+                
+                <!-- Post 2 -->
+                <article class="post-card">
+                    <div class="post-img" style="background: #bbf7d0;">
+                        <i class="fas fa-chart-line" style="font-size: 2rem; color: #166534;"></i>
+                    </div>
+                    <div class="post-content">
+                        <div class="meta">
+                            <span><i class="far fa-calendar"></i> May 15, 2023</span>
+                            <span><i class="far fa-user"></i> By Amit Patel</span>
+                        </div>
+                        <h3>Data Science Career Path: Skills You Need in 2023</h3>
+                        <p>Updated guide on essential skills, tools, and learning resources to break into data science this year.</p>
+                        <a href="#" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Read More</a>
+                    </div>
+                </article>
+                
+                <!-- Post 3 -->
+                <article class="post-card">
+                    <div class="post-img" style="background: #fbcfe8;">
+                        <i class="fas fa-robot" style="font-size: 2rem; color: #831843;"></i>
+                    </div>
+                    <div class="post-content">
+                        <div class="meta">
+                            <span><i class="far fa-calendar"></i> April 30, 2023</span>
+                            <span><i class="far fa-user"></i> By Neha Gupta</span>
+                        </div>
+                        <h3>Getting Started with Machine Learning: A Practical Guide</h3>
+                        <p>Step-by-step approach to learning ML concepts without overwhelming math, with project ideas.</p>
+                        <a href="#" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Read More</a>
+                    </div>
+                </article>
+                
+                <!-- Post 4 -->
+                <article class="post-card">
+                    <div class="post-img" style="background: #fde68a;">
+                        <i class="fas fa-laptop-code" style="font-size: 2rem; color: #92400e;"></i>
+                    </div>
+                    <div class="post-content">
+                        <div class="meta">
+                            <span><i class="far fa-calendar"></i> April 18, 2023</span>
+                            <span><i class="far fa-user"></i> By Sanjay Mehta</span>
+                        </div>
+                        <h3>How to Prepare for Technical Interviews: DSA Patterns</h3>
+                        <p>Common data structure and algorithm patterns that appear in 80% of coding interviews.</p>
+                        <a href="#" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Read More</a>
+                    </div>
+                </article>
+                
+                <!-- Post 5 -->
+                <article class="post-card">
+                    <div class="post-img" style="background: #ddd6fe;">
+                        <i class="fas fa-mobile-alt" style="font-size: 2rem; color: #5b21b6;"></i>
+                    </div>
+                    <div class="post-content">
+                        <div class="meta">
+                            <span><i class="far fa-calendar"></i> April 5, 2023</span>
+                            <span><i class="far fa-user"></i> By Anjali Reddy</span>
+                        </div>
+                        <h3>Flutter vs React Native: Choosing in 2023</h3>
+                        <p>Performance comparison, developer experience, and which projects suit each framework best.</p>
+                        <a href="#" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Read More</a>
+                    </div>
+                </article>
+                
+                <!-- Post 6 -->
+                <article class="post-card">
+                    <div class="post-img" style="background: #a7f3d0;">
+                        <i class="fas fa-database" style="font-size: 2rem; color: #065f46;"></i>
+                    </div>
+                    <div class="post-content">
+                        <div class="meta">
+                            <span><i class="far fa-calendar"></i> March 22, 2023</span>
+                            <span><i class="far fa-user"></i> By Vikram Singh</span>
+                        </div>
+                        <h3>SQL for Beginners: Essential Queries You Should Know</h3>
+                        <p>Practical SQL examples with real-world datasets to help you master database queries.</p>
+                        <a href="#" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Read More</a>
+                    </div>
+                </article>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- About Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">About Blog</h3>
+                    <p>CodeMaster Blog provides actionable advice on software development, career growth, and learning strategies from industry professionals.</p>
+                </div>
+                
+                <!-- Categories -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Categories</h3>
+                    <ul class="category-list">
+                        <li><a href="#">Web Development <span>24</span></a></li>
+                        <li><a href="#">Data Science <span>18</span></a></li>
+                        <li><a href="#">Mobile Development <span>12</span></a></li>
+                        <li><a href="#">Artificial Intelligence <span>9</span></a></li>
+                        <li><a href="#">Career Advice <span>15</span></a></li>
+                        <li><a href="#">Interview Prep <span>11</span></a></li>
+                    </ul>
+                </div>
+                
+                <!-- Recent Posts -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Recent Posts</h3>
+                    <ul class="recent-posts">
+                        <li class="recent-post">
+                            <div class="recent-img"></div>
+                            <div class="recent-content">
+                                <h4>Python Tips for Beginners</h4>
+                                <div class="meta">June 5, 2023</div>
+                            </div>
+                        </li>
+                        <li class="recent-post">
+                            <div class="recent-img"></div>
+                            <div class="recent-content">
+                                <h4>Building REST APIs with Node.js</h4>
+                                <div class="meta">May 20, 2023</div>
+                            </div>
+                        </li>
+                        <li class="recent-post">
+                            <div class="recent-img"></div>
+                            <div class="recent-content">
+                                <h4>Git Best Practices</h4>
+                                <div class="meta">May 8, 2023</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Tags -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Tags</h3>
+                    <div class="tags-container">
+                        <a href="#" class="tag-sm">React</a>
+                        <a href="#" class="tag-sm">Python</a>
+                        <a href="#" class="tag-sm">DSA</a>
+                        <a href="#" class="tag-sm">Jobs</a>
+                        <a href="#" class="tag-sm">SQL</a>
+                        <a href="#" class="tag-sm">CSS</a>
+                        <a href="#" class="tag-sm">Internship</a>
+                        <a href="#" class="tag-sm">Portfolio</a>
+                    </div>
+                </div>
+                
+                <!-- Newsletter -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Newsletter</h3>
+                    <p>Get weekly coding tips and career advice</p>
+                    <form class="newsletter-form">
+                        <input type="text" placeholder="Your Name">
+                        <input type="email" placeholder="Your Email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="pagination">
+            <a href="#" class="page-link active">1</a>
+            <a href="#" class="page-link">2</a>
+            <a href="#" class="page-link">3</a>
+            <a href="#" class="page-link">Next <i class="fas fa-chevron-right"></i></a>
+        </div>
+    </main>
+     <!-- Footer Section -->
+     <footer>
+        <div class="footer-container">
+            <!-- About Column -->
+            <div class="footer-about">
+                <div class="footer-logo">Kataria Classes</div>
+                <p>Providing industry-relevant software training and internship programs to help students launch successful tech careers.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <!-- Quick Links Column -->
+            <div class="footer-links-col">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Internships</a></li>
+                    <li><a href="#">Placements</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            
+            <!-- Courses Column -->
+            <div class="footer-links-col">
+                <h3 class="footer-heading">Our Courses</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Full-Stack Development</a></li>
+                    <li><a href="#">Data Science</a></li>
+                    <li><a href="#">AI/ML</a></li>
+                    <li><a href="#">Mobile Development</a></li>
+                    <li><a href="#">Cloud Computing</a></li>
+                    <li><a href="#">DevOps</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Column -->
+            <div class="footer-contact-col">
+                <h3 class="footer-heading">Contact Us</h3>
+                <ul class="footer-contact">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Near Gurudware, Preetam Nagar, Prayagraj,<br>Allahabad, Uttar Pradesh 211011</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 87 0754 8600<br>+91 97 6988 4814</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@example.in<br>admissions@example.in</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Newsletter Column -->
+            <div class="footer-newsletter">
+                <h3 class="footer-heading">Newsletter</h3>
+                <p>Subscribe to get updates on new courses and offers</p>
+                <form class="newsletter-form">
+                    <input type="text" placeholder="Your Name">
+                    <input type="email" placeholder="Your Email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 Kataria Classes. All Rights Reserved. | <a href="#" style="color: #94a3b8;">Privacy Policy</a> | <a href="#" style="color: #94a3b8;">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing!');
+            this.reset();
+        });
+    </script>
+    
+    <script>
+        // Simple interactivity for demo
+        document.querySelectorAll('.category-list a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Filtering by: ' + this.textContent.split(' ')[0]);
+            });
+        });
+        
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thanks for subscribing!');
+            this.reset();
+        });
+    </script>
+     <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const sideNav = document.getElementById('side-nav');
+        
+        menuBtn.addEventListener('click', () => {
+            sideNav.style.left = '0';
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            sideNav.style.left = '-100%';
+        });
+         // Sticky navbar effect
+         window.addEventListener('scroll', function() {
+                    if (window.scrollY > 50) {
+                        document.body.classList.add('scrolled');
+                    } else {
+                        document.body.classList.remove('scrolled');
+                    }
+                });
+            </script>
+</body>
+</html>
