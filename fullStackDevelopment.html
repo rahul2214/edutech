@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack Development Course | Katatia Classes</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #dbeafe;
+            --text: #1e293b;
+            --text-light: #64748b;
+        }
+        
+        * {
+            /* margin: 0;
+            padding: 0; */
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 30px;
+            margin: 20px;
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        body.scrolled .navbar {
+            top: 0;
+            margin: 0;
+            border-radius: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+        }
+
+        body.scrolled {
+            padding-top: 80px; /* Prevents content from jumping behind navbar */
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 54px;
+            width: 54px;
+            border-radius: 30px;
+        }
+        
+        .logo h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links li {
+            display: inline;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-size: 1em;
+            transition: color 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        .nav-links a:hover {
+            color: #2563eb;
+            background: #f1f5f9;
+        }
+        
+        /* Mobile Menu Button */
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        .side-nav {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #1e293b;
+    padding: 20px;
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.side-nav .close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    float: right;
+    cursor: pointer;
+}
+
+.side-nav-links {
+    list-style: none;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.side-nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+}
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 20px;
+            }
+            body.scrolled .navbar {
+                padding: 10px 20px;
+            }
+            
+            .menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 15px;
+                font-size: 1.2rem;
+            }
+            
+           
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* Hero Section */
+        .course-hero {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .course-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        /* Course Highlights */
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .highlight-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .highlight-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        /* Curriculum */
+        .curriculum {
+            background: #f8fafc;
+            padding: 60px 0;
+        }
+        
+        .module {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .module-header {
+            padding: 10px;
+            background: var(--primary-light);
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        
+        .module-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .module.active .module-content {
+            padding: 20px;
+            max-height: 1000px;
+        }
+        
+        .topic {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        
+        /* Tools Section */
+        .tools {
+            padding: 60px 0;
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .tool-card {
+            text-align: center;
+            padding: 20px 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            background-color: #89b9cf;
+        }
+        
+        .tool-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        /* Success Stories */
+        .success-stories {
+            background: #f8fafc;
+            padding: 60px 0;
+        }
+        .stories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 15px 5px;
+    }
+        .story-card {
+            background: white;
+           
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .story-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+         /* Instructors Section */
+    .instructors {
+        padding: 60px 0;
+        background: white;
+    }
+
+    .instructor-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .instructor-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border: 1px solid #f1f5f9;
+    }
+
+    .instructor-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .instructor-header {
+        display: flex;
+        gap: 20px;
+        padding: 25px 25px 15px;
+        position: relative;
+    }
+
+    .instructor-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+        position: relative;
+        border: 3px solid #e0e7ff;
+    }
+
+    .instructor-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .company-logo {
+        position: absolute;
+        bottom: -5px;
+        right: -5px;
+        width: 30px;
+        height: 30px;
+        background: white;
+        border-radius: 50%;
+        padding: 3px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .company-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .instructor-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .instructor-info h3 {
+        margin: 0 0 5px;
+        font-size: 1.2rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .title {
+        color: #64748b;
+        font-size: 0.9rem;
+        margin: 0 0 10px;
+    }
+
+    .expertise {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .expertise span {
+        background: #e0e7ff;
+        color: #2563eb;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .instructor-bio {
+        padding: 0 25px 20px;
+        color: #475569;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        border-bottom: 1px solid #f1f5f9;
+    }
+
+    .instructor-stats {
+        display: flex;
+        padding: 15px 25px;
+        justify-content: space-between;
+    }
+
+    .stat {
+        text-align: center;
+        font-size: 0.8rem;
+    }
+
+    .stat i {
+        display: block;
+        color: #2563eb;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+
+    @media (max-width: 768px) {
+        .instructor-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .instructor-header {
+            padding: 20px;
+        }
+    }
+        
+        /* FAQ Section */
+        .faq-container {
+        width: 100%;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        @media (max-width: 768px) {
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+       
+        /* FAQ */
+        .faq {
+            padding: 60px 0;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        @media (max-width: 768px) {
+            .course-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <style>
+        /* Base Styles */
+        .course-hero {
+            background: linear-gradient(135deg, #1a237e, #283593);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .course-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: rgba(255,255,255,0.03);
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .text-content {
+            flex: 1;
+        }
+        
+        .image-content {
+            flex: 1;
+        }
+        
+        /* Badges */
+        .badge {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .popular-badge {
+            background: #ff5722;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .rating-badge {
+            background: rgba(255,255,255,0.15);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Typography */
+        h1 {
+            font-size: 2.8rem;
+            margin: 0 0 15px;
+            line-height: 1.2;
+        }
+        
+        .highlight {
+            color: #4fc3f7;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+        
+        /* CTA Section */
+        .cta-banner {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .closing-alert {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffeb3b;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .primary-btn {
+            background: #4fc3f7;
+            color: #0d47a1;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .primary-btn:hover {
+            background: #81d4fa;
+            transform: translateY(-2px);
+        }
+        
+        .secondary-btn {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .secondary-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .emi {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        .payment-logos {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .payment-logos img {
+            height: 20px;
+            opacity: 0.8;
+        }
+        
+        /* Highlights Grid */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .highlight-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        
+        .highlight-item i {
+            color: #4fc3f7;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        
+        .highlight-item strong {
+            display: block;
+            font-size: 0.95rem;
+        }
+        
+        .highlight-item span {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            display: block;
+            margin-top: 3px;
+        }
+        
+        /* Counselor CTA */
+        .counselor-cta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-top: 30px;
+        }
+        
+        .counselor-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .counselor-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .counselor-info p {
+            font-size: 0.85rem;
+            margin: 0;
+            opacity: 0.8;
+        }
+        
+        .counselor-info h4 {
+            margin: 5px 0 0;
+            font-size: 1rem;
+        }
+        
+        .outline-btn {
+            background: transparent;
+            color: white;
+            border: 1px solid #4fc3f7;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .outline-btn:hover {
+            background: rgba(79, 195, 247, 0.1);
+        }
+        
+        /* Image Content */
+        .image-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .image-wrapper img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-wrapper:hover img {
+            transform: scale(1.03);
+        }
+        
+        .image-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .image-badge:hover {
+            background: rgba(0,0,0,0.9);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .image-content {
+                width: 100%;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .course-hero {
+                padding: 50px 0;
+            }
+            
+            .badge {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+            
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .counselor-cta {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+        }
+        /* Footer Styles */
+     footer {
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 60px 0 20px;
+            font-size: 0.95rem;
+        }
+        
+        .footer-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+        
+        .footer-heading {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: #2563eb;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            color: #2563eb;
+            transform: translateX(5px);
+        }
+        
+        .footer-contact li {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: flex-start;
+            color: #cbd5e1;
+        }
+        
+        .footer-contact i {
+            color: #2563eb;
+            margin-top: 3px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .newsletter-form input {
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            background: #334155;
+            color: white;
+        }
+        
+        .newsletter-form input::placeholder {
+            color: #94a3b8;
+        }
+        
+        .newsletter-form button {
+            padding: 12px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background: #1d4ed8;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #334155;
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #2563eb;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar (reuse your existing code) -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/image.png" alt="Katatia Classes Logo">
+            <h1>Kataria Classes</h1>
+        </div>
+        
+        <button class="menu-btn" id="menu-btn">&#9776;</button>
+        
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        
+    </nav>
+     <!-- Side Navbar -->
+     <div class="side-nav" id="side-nav">
+        <button class="close-btn" id="close-btn">&times;</button>
+        <ul class="side-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="course-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="text-content">
+                    <div class="badge">
+                        <span class="popular-badge">#1 Popular Course</span>
+                        <span class="rating-badge">⭐ 4.9/5 (1,243 Reviews)</span>
+                    </div>
+                    
+                    <h1>Full Stack Development <span class="highlight">Mastery</span> Program</h1>
+                    
+                    <p class="subtitle">Become job-ready in 6 months with our industry-aligned curriculum, hands-on projects, and 1:1 mentorship from top tech professionals.</p>
+                    
+                    <div class="cta-banner">
+                        <div class="closing-alert">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Admissions closing on <strong>March 27, 2025</strong> - Limited seats!</span>
+                        </div>
+                        
+                        <div class="buttons">
+                            <button class="primary-btn">
+                                <i class="fas fa-lock"></i> Enroll Now
+                            </button>
+                            <button class="secondary-btn">
+                                <i class="fas fa-share-alt"></i> Share
+                            </button>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="highlights-grid">
+                        <div class="highlight-item">
+                            <i class="fas fa-briefcase"></i>
+                            <div>
+                                <strong>100% Job Assistance</strong>
+                                <span>Including resume prep & mock interviews</span>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-certificate"></i>
+                            <div>
+                                <strong>Industry Certificate</strong>
+                                <span>Recognized by 150+ hiring partners</span>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-user-graduate"></i>
+                            <div>
+                                <strong>1:1 Mentorship</strong>
+                                <span>Weekly sessions with experts</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Full Stack Development">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Highlights -->
+    <section class="container">
+        <h2 class="section-title">What You'll Get</h2>
+        <div class="highlights">
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>300+ Hours of Learning</h3>
+                <p>Comprehensive curriculum covering all essential technologies</p>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <h3>12 Real Projects</h3>
+                <p>Build portfolio-worthy applications with code reviews</p>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>Industry Certificate</h3>
+                <p>Recognized by top tech companies</p>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>1:1 Mentorship</h3>
+                <p>Weekly sessions with industry experts</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum -->
+    <section class="curriculum">
+        <div class="container">
+            <h2 class="section-title">Course Curriculum</h2>
+            
+            <div class="module active">
+                <div class="module-header">
+                    <h3>Module 1: Frontend Fundamentals (4 Weeks)</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="module-content">
+                    <div class="topic">
+                        <span>HTML5 & CSS3</span>
+                        <span>15 Lessons</span>
+                    </div>
+                    <div class="topic">
+                        <span>JavaScript ES6+</span>
+                        <span>20 Lessons</span>
+                    </div>
+                    <div class="topic">
+                        <span>Responsive Design</span>
+                        <span>10 Lessons</span>
+                    </div>
+                    <div class="topic">
+                        <span>Project: Portfolio Website</span>
+                        <span>1 Week</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="module">
+                <div class="module-header">
+                    <h3>Module 2: React & Advanced Frontend (6 Weeks)</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="module-content">
+                    <div class="topic">
+                        <span>HTML5 & CSS3</span>
+                        <span>15 Lessons</span>
+                    </div>
+                    <div class="topic">
+                        <span>JavaScript ES6+</span>
+                        <span>20 Lessons</span>
+                    </div>
+                    <div class="topic">
+                        <span>Responsive Design</span>
+                        <span>10 Lessons</span>
+                    </div>
+                    <div class="topic">
+                        <span>Project: Portfolio Website</span>
+                        <span>1 Week</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- More modules... -->
+        </div>
+    </section>
+
+    <!-- Tools & Technologies -->
+    <section class="tools">
+        <div class="container">
+            <h2 class="section-title">Technologies You'll Master</h2>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h4>HTML5</h4>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h4>CSS3</h4>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h4>JavaScript</h4>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h4>React</h4>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <h4>Node.js</h4>
+                </div>
+                <!-- More tools... -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="container">
+        <h2 class="section-title">Projects You'll Build</h2>
+        <div class="highlights">
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>E-commerce App</h3>
+                <p>Full-featured store with cart, payments, and admin dashboard</p>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <h3>Task Manager</h3>
+                <p>Kanban-style productivity app with real-time updates</p>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>Social Media App</h3>
+                <p>Twitter-like platform with authentication and feeds</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructors -->
+    <section class="instructors">
+        <div class="container">
+            <h2 class="section-title">Meet Your Instructors</h2>
+            <div class="instructor-grid">
+                <!-- Instructor 1 -->
+                <div class="instructor-card">
+                    <div class="instructor-header">
+                        <div class="instructor-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rajesh Kumar">
+                            <!-- <div class="company-logo">
+                                <img src="https://logo.clearbit.com/amazon.com" alt="Amazon">
+                            </div> -->
+                        </div>
+                        <div class="instructor-info">
+                            <h3>Rajesh Kumar</h3>
+                            <p class="title">Senior Full-Stack Engineer</p>
+                            <div class="expertise">
+                                <span>React</span>
+                                <span>Node.js</span>
+                                <span>AWS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="instructor-bio">
+                        <p>10+ years experience building scalable web applications. Mentored 200+ students.</p>
+                    </div>
+                    <div class="instructor-stats">
+                        <div class="stat">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>5 Courses</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-star"></i>
+                            <span>4.9/5</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span>1.2K Students</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Instructor 2 -->
+                <div class="instructor-card">
+                    <div class="instructor-header">
+                        <div class="instructor-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Sharma">
+                            <!-- <div class="company-logo">
+                                <img src="https://logo.clearbit.com/google.com" alt="Google">
+                            </div> -->
+                        </div>
+                        <div class="instructor-info">
+                            <h3>Priya Sharma</h3>
+                            <p class="title">Data Science Lead</p>
+                            <div class="expertise">
+                                <span>Python</span>
+                                <span>ML</span>
+                                <span>TensorFlow</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="instructor-bio">
+                        <p>Former AI researcher at Google. Specializes in making complex concepts accessible to beginners.</p>
+                    </div>
+                    <div class="instructor-stats">
+                        <div class="stat">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>3 Courses</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-star"></i>
+                            <span>4.8/5</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span>850 Students</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Instructor 3 -->
+                <div class="instructor-card">
+                    <div class="instructor-header">
+                        <div class="instructor-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Amit Patel">
+                            <!-- <div class="company-logo">
+                                <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft">
+                            </div> -->
+                        </div>
+                        <div class="instructor-info">
+                            <h3>Amit Patel</h3>
+                            <p class="title">Cloud Architect</p>
+                            <div class="expertise">
+                                <span>Azure</span>
+                                <span>DevOps</span>
+                                <span>Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="instructor-bio">
+                        <p>Helps students transition to cloud engineering with real-world infrastructure projects.</p>
+                    </div>
+                    <div class="instructor-stats">
+                        <div class="stat">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>4 Courses</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-star"></i>
+                            <span>4.7/5</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span>950 Students</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="success-stories">
+        <div class="container">
+            <h2 class="section-title">Career Success Stories</h2>
+            <div class="stories-container">
+            <div class="story-card">
+                <div class="story-header">
+                    <div class="story-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h3>Rahul Sharma</h3>
+                        <p>Placed at Amazon as SDE-1</p>
+                    </div>
+                </div>
+                <p>"The Full-Stack course gave me the exact skills needed to crack Amazon interviews. Built 8 real projects that became my interview talking points."</p>
+                <div class="course-meta" style="border: none; padding-bottom: 0;">
+                    <div class="meta-item">
+                        <i class="fas fa-coins"></i>
+                        <span>₹12 LPA</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="far fa-clock"></i>
+                        <span>6 Months</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="story-card">
+                <div class="story-header">
+                    <div class="story-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h3>Priya Patel</h3>
+                        <p>Full-Stack Developer at Startup</p>
+                    </div>
+                </div>
+                <p>"The hands-on approach helped me transition from manual testing to development. Got promoted within 3 months of course completion."</p>
+                <div class="course-meta" style="border: none; padding-bottom: 0;">
+                    <div class="meta-item">
+                        <i class="fas fa-coins"></i>
+                        <span>₹8 LPA</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="far fa-clock"></i>
+                        <span>4 Months</span>
+                    </div>
+                </div>
+            </div>
+            <div class="story-card">
+                <div class="story-header">
+                    <div class="story-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h3>Priya Patel</h3>
+                        <p>Full-Stack Developer at Startup</p>
+                    </div>
+                </div>
+                <p>"The hands-on approach helped me transition from manual testing to development. Got promoted within 3 months of course completion."</p>
+                <div class="course-meta" style="border: none; padding-bottom: 0;">
+                    <div class="meta-item">
+                        <i class="fas fa-coins"></i>
+                        <span>₹8 LPA</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="far fa-clock"></i>
+                        <span>4 Months</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item active">
+                <div class="faq-question">
+                    <span>Is prior coding experience required?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Basic programming knowledge is helpful but not mandatory. We start with fundamentals.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What's the course duration?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>6 months with 15-20 hours/week commitment. Flexible schedule available.</p>
+                </div>
+            </div>
+            <!-- More FAQs... -->
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="enroll" class="course-hero" style="background: var(--primary-dark); padding: 60px 0;">
+        <div class="container">
+            <h2>Ready to Become a Full-Stack Developer?</h2>
+            <p>Next batch starts June 15. Limited seats available.</p>
+            <a href="#" class="btn" style="background: white; color: var(--primary);">Enroll Now</a>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <!-- About Column -->
+            <div class="footer-about">
+                <div class="footer-logo">Kataria Classes</div>
+                <p>Providing industry-relevant software training and internship programs to help students launch successful tech careers.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <!-- Quick Links Column -->
+            <div class="footer-links-col">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Internships</a></li>
+                    <li><a href="#">Placements</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            
+            <!-- Courses Column -->
+            <div class="footer-links-col">
+                <h3 class="footer-heading">Our Courses</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Full-Stack Development</a></li>
+                    <li><a href="#">Data Science</a></li>
+                    <li><a href="#">AI/ML</a></li>
+                    <li><a href="#">Mobile Development</a></li>
+                    <li><a href="#">Cloud Computing</a></li>
+                    <li><a href="#">DevOps</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Column -->
+            <div class="footer-contact-col">
+                <h3 class="footer-heading">Contact Us</h3>
+                <ul class="footer-contact">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Near Gurudware, Preetam Nagar, Prayagraj,<br>Allahabad, Uttar Pradesh 211011</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 87 0754 8600<br>+91 97 6988 4814</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@example.in<br>admissions@example.in</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Newsletter Column -->
+            <div class="footer-newsletter">
+                <h3 class="footer-heading">Newsletter</h3>
+                <p>Subscribe to get updates on new courses and offers</p>
+                <form class="newsletter-form">
+                    <input type="text" placeholder="Your Name">
+                    <input type="email" placeholder="Your Email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 Kataria Classes. All Rights Reserved. | <a href="#" style="color: #94a3b8;">Privacy Policy</a> | <a href="#" style="color: #94a3b8;">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing!');
+            this.reset();
+        });
+    </script>
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const sideNav = document.getElementById('side-nav');
+        
+        menuBtn.addEventListener('click', () => {
+            sideNav.style.left = '0';
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            sideNav.style.left = '-100%';
+        });
+         // Sticky navbar effect
+         window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+        });
+            </script>
+
+    <script>
+        // Module accordion
+        document.querySelectorAll('.module-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const module = header.parentElement;
+                module.classList.toggle('active');
+            });
+        });
+        
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faq = question.parentElement;
+                faq.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
