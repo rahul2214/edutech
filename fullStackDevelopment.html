@@ -31,10 +31,8 @@
             background-color: white;
             padding: 10px 40px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 30px;
-            margin: 20px;
             position: sticky;
-            top: 20px;
+            top: 0px;
             z-index: 1000;
             transition: all 0.3s ease;
         }
@@ -91,10 +89,9 @@
             padding: 5px 10px;
             border-radius: 20px;
         }
-        
+
         .nav-links a:hover {
-            color: #2563eb;
-            background: #f1f5f9;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
         
         /* Mobile Menu Button */
@@ -1651,14 +1648,6 @@
         
         closeBtn.addEventListener('click', () => {
             sideNav.style.left = '-100%';
-        });
-         // Sticky navbar effect
-         window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                document.body.classList.add('scrolled');
-            } else {
-                document.body.classList.remove('scrolled');
-            }
         });
             </script>
 
