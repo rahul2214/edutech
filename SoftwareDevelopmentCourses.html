@@ -220,18 +220,137 @@
             font-size: 2.2rem;
         }
         
-        /* Hero Section */
-        .software-hero {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .software-hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
+      /* Hero Section */
+      .software-hero {
+    background: linear-gradient(135deg, #2b5876, #4e4376);
+    color: white;
+    padding: 80px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+
+.hero-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-image {
+    width: 45%;
+    max-height: 350px; /* Reduced height */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.hero-text .lead {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: white;
+    color: var(--primary-dark);
+}
+
+.btn-primary:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.btn-outline:hover {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.trust-markers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 0.9rem;
+}
+
+.trust-markers span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    opacity: 0.9;
+}
+
+.trust-markers i {
+    color: #4ade80;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-text {
+        max-width: 100%;
+    }
+    
+    .hero-image {
+        justify-content: center;
+        margin-top: 40px;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+    }
+    
+    .trust-markers {
+        justify-content: center;
+    }
+}
         
         /* Course Cards Grid */
         .course-grid {
@@ -784,13 +903,29 @@
         </ul>
     </div>
 
-    <!-- Hero Section -->
-    <section class="software-hero">
-        <div class="container">
-            <h1>Software Development Courses</h1>
-            <p>Become job-ready with our industry-aligned curriculum and expert mentorship</p>
+ <!-- Hero Section -->
+<section class="software-hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Master In-Demand Software Development Skills</h1>
+                <p class="lead">Accelerate your career with our industry-aligned curriculum, hands-on projects, and personalized mentorship from tech experts.</p>
+                <div class="cta-buttons">
+                    <a href="#courses" class="btn btn-primary">Explore Courses</a>
+                    <a href="#contact" class="btn btn-outline">Talk to an Advisor</a>
+                </div>
+                <div class="trust-markers">
+                    <span><i class="fas fa-check-circle"></i> Job-Ready Curriculum</span>
+                    <span><i class="fas fa-check-circle"></i> 1-on-1 Mentorship</span>
+                    <span><i class="fas fa-check-circle"></i> Portfolio Projects</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Developer working on code" loading="lazy">
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Courses Section -->
     <section class="container">
@@ -820,7 +955,7 @@
                 <div class="course-content">
                     <h3>Mobile App Development</h3>
                     <p>Build iOS & Android apps with React Native and Firebase</p>
-                    <a href="#" class="btn" style="display: block; text-align: center;">View Curriculum</a>
+                    <a href="flutter.html" class="btn" style="display: block; text-align: center;">View Curriculum</a>
                 </div>
             </div>
             
@@ -833,9 +968,7 @@
                     
                     <h3>Python & Django</h3>
                     <p>Complete backend development with Python ecosystem</p>
-                    
-                   
-                    
+
                     <a href="#" class="btn" style="display: block; text-align: center;">View Curriculum</a>
                 </div>
             </div>
