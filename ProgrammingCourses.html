@@ -3,31 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Software Development Courses | Katatia Classes</title>
+    <title>Programming Courses | Kataria Classes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
-        /* Base Styles */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #dbeafe;
+            --secondary: #10b981;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1e40af;
-            --primary-light: #dbeafe;
-            --text: #1e293b;
-            --text-light: #64748b;
-        }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: var(--text);
             line-height: 1.6;
+            background-color: white;
         }
-        
+
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -93,10 +94,9 @@
             padding: 5px 10px;
             border-radius: 20px;
         }
-        
+
         .nav-links a:hover {
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-
         }
         
         /* Mobile Menu Button */
@@ -189,12 +189,23 @@
             
            
         }
+        
         .container {
             width: 90%;
-            
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px 0;
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+        
+        .highlight {
+            color: var(--primary);
         }
         
         .btn {
@@ -202,7 +213,7 @@
             padding: 12px 25px;
             background: var(--primary);
             color: white;
-            border-radius: 30px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
@@ -211,146 +222,176 @@
         .btn:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 5px 10px rgba(30, 64, 175, 0.2);
+            box-shadow: 0 5px 15px rgba(30, 64, 175, 0.2);
         }
         
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.2rem;
+        /* Hero Section */
+        .programming-hero {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));     
+            color: white;
+            padding: 80px 0;
         }
         
-      /* Hero Section */
-      .software-hero {
-    background: linear-gradient(135deg, #2b5876, #4e4376);
-    color: white;
-    padding: 80px 0;
-}
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .text-content {
+            flex: 1;
+        }
+        
+        .image-content {
+            flex: 1;
+        }
+        
+        .programming-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+        
+        .badge-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .popular-badge {
+            background: #f59e0b;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .rating-badge {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .primary-btn {
+            background: white;
+            color: var(--primary-dark);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .primary-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        
+        .secondary-btn {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .secondary-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .image-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-wrapper:hover img {
+            transform: scale(1.03);
+        }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.hero-content {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-
-
-.hero-text {
-    flex: 1;
-    max-width: 600px;
-}
-
-.hero-image {
-    width: 45%;
-    max-height: 350px; /* Reduced height */
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-.hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.hero-hero h1 {
-    font-size: 2.8rem;
-    margin-bottom: 20px;
-    line-height: 1.2;
-    font-weight: 700;
-}
-
-.hero-text .lead {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    line-height: 1.6;
-    opacity: 0.9;
-}
-
-.cta-buttons {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.btn {
-    padding: 12px 24px;
-    border-radius: 4px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.btn-primary {
-    background: white;
-    color: var(--primary-dark);
-}
-
-.btn-primary:hover {
-    background: #f0f0f0;
-    transform: translateY(-2px);
-}
-
-.btn-outline {
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    color: white;
-}
-
-.btn-outline:hover {
-    border-color: white;
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-}
-
-.trust-markers {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    font-size: 0.9rem;
-}
-
-.trust-markers span {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    opacity: 0.9;
-}
-
-.trust-markers i {
-    color: #4ade80;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .hero-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .hero-text {
-        max-width: 100%;
-    }
-    
-    .hero-image {
-        justify-content: center;
-        margin-top: 40px;
-    }
-    
-    .cta-buttons {
-        justify-content: center;
-    }
-    
-    .trust-markers {
-        justify-content: center;
-    }
-}
+        
+        
+        /* Course Highlights */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .highlight-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        
+        .highlight-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .highlight-text strong {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .highlight-text span {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            display: block;
+        }
         
         /* Course Cards Grid */
         .course-grid {
@@ -467,9 +508,8 @@
             font-size: 0.9rem;
             color: var(--text-light);
         }
-        
-        /* Benefits Section */
-        .benefits-grid {
+         /* Benefits Section */
+         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
@@ -497,48 +537,144 @@
             font-size: 1.8rem;
         }
         
-        /* Success Stories */
-        .success-stories {
-            background: #f8fafc;
+        /* Instructors Section */
+        .instructors-section {
+            background: var(--bg-light);
             padding: 60px 0;
         }
-        .stories-container {
+        
+        .instructor-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        padding: 15px 5px;
-    }
-        .story-card {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .instructor-card {
             background: white;
-           
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .instructor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .instructor-header {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .instructor-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 3px solid var(--primary-light);
+        }
+        
+        .instructor-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .instructor-info h3 {
+            margin-bottom: 5px;
+        }
+        
+        .instructor-title {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .expertise {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .expertise span {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            padding: 60px 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 30px;
         }
         
-        .story-header {
+        .testimonial-header {
             display: flex;
             align-items: center;
             gap: 20px;
             margin-bottom: 20px;
         }
         
-        .story-avatar {
+        .testimonial-avatar {
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: #e2e8f0;
+            background: var(--primary-light);
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--primary);
             font-size: 1.5rem;
+        }
+        
+        .testimonial-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-info p {
             color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-light);
+            font-size: 0.9rem;
         }
         
         /* FAQ Section */
+        .faq-section {
+            background: var(--bg-light);
+            padding: 60px 0;
+        }
+        
         .faq-container {
-        width: 100%;
+            max-width: 800px;
             margin: 0 auto;
         }
         
@@ -564,161 +700,54 @@
             max-height: 0;
             overflow: hidden;
             transition: all 0.3s ease;
+            background: white;
         }
         
         .faq-item.active .faq-answer {
-            padding: 0 20px 20px;
+            padding: 20px;
             max-height: 500px;
         }
         
-        @media (max-width: 768px) {
-            .course-grid {
-                grid-template-columns: 1fr;
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
             }
             
+            .text-content, .image-content {
+                width: 100%;
+            }
+            
+            .programming-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
             .section-title {
                 font-size: 1.8rem;
             }
-        }
-
-        /* Instructors Section */
-    .instructors {
-        padding: 60px 0;
-        background: white;
-    }
-
-    .instructor-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        margin-top: 40px;
-    }
-
-    .instructor-card {
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        overflow: hidden;
-        transition: all 0.3s ease;
-        border: 1px solid #f1f5f9;
-    }
-
-    .instructor-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    .instructor-header {
-        display: flex;
-        gap: 20px;
-        padding: 25px 25px 15px;
-        position: relative;
-    }
-
-    .instructor-avatar {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        overflow: hidden;
-        flex-shrink: 0;
-        position: relative;
-        border: 3px solid #e0e7ff;
-    }
-
-    .instructor-avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .company-logo {
-        position: absolute;
-        bottom: -5px;
-        right: -5px;
-        width: 30px;
-        height: 30px;
-        background: white;
-        border-radius: 50%;
-        padding: 3px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .company-logo img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-
-    .instructor-info {
-        flex: 1;
-        min-width: 0;
-    }
-
-    .instructor-info h3 {
-        margin: 0 0 5px;
-        font-size: 1.2rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .title {
-        color: #64748b;
-        font-size: 0.9rem;
-        margin: 0 0 10px;
-    }
-
-    .expertise {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .expertise span {
-        background: #e0e7ff;
-        color: #2563eb;
-        padding: 4px 10px;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 600;
-    }
-
-    .instructor-bio {
-        padding: 0 25px 20px;
-        color: #475569;
-        font-size: 0.9rem;
-        line-height: 1.6;
-        border-bottom: 1px solid #f1f5f9;
-    }
-
-    .instructor-stats {
-        display: flex;
-        padding: 15px 25px;
-        justify-content: space-between;
-    }
-
-    .stat {
-        text-align: center;
-        font-size: 0.8rem;
-    }
-
-    .stat i {
-        display: block;
-        color: #2563eb;
-        font-size: 1.1rem;
-        margin-bottom: 5px;
-    }
-
-    @media (max-width: 768px) {
-        .instructor-grid {
-            grid-template-columns: 1fr;
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
-        .instructor-header {
-            padding: 20px;
+        @media (max-width: 576px) {
+            .programming-hero {
+                padding: 60px 0;
+            }
+            
+            .badge-group {
+                flex-direction: column;
+                gap: 8px;
+            }
         }
-    }
-     /* Footer Styles */
+           /* Footer Styles */
      footer {
             background: #1e293b;
             color: #f8fafc;
@@ -871,10 +900,10 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <nav class="navbar">
+      <!-- Navbar (reuse your existing code) -->
+      <nav class="navbar">
         <div class="logo">
             <img src="assets/image.png" alt="Katatia Classes Logo">
             <h1>Kataria Classes</h1>
@@ -902,348 +931,373 @@
             <li><a href="contact.html">Contact Us</a></li>
         </ul>
     </div>
+    <!-- Hero Section -->
+    <section class="programming-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="text-content">
+                    <div class="badge-group">
+                        <span class="popular-badge">
+                            <i class="fas fa-star"></i> Most Popular Courses
+                        </span>
+                        <span class="rating-badge">
+                            <i class="fas fa-check-circle"></i> 4.8/5 (1,200+ Reviews)
+                        </span>
+                    </div>
+                    
+                    <h1>Master <span class="highlight">Programming</span> From Basics to Advanced</h1>
+                    
+                    <p class="hero-description">Become job-ready with our industry-aligned curriculum, hands-on projects, and 1:1 mentorship from top tech professionals.</p>
+                    
+                    <div class="button-group">
+                        <button class="primary-btn">
+                            <i class="fas fa-laptop-code"></i> Explore Courses
+                        </button>
+                        <button class="secondary-btn">
+                            <i class="fas fa-download"></i> Download Syllabus
+                        </button>
+                    </div>
+                    
+                    <div class="highlights-grid">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <strong>Industry Certificates</strong>
+                                <span>Recognized by 100+ hiring partners</span>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <strong>Job Placement</strong>
+                                <span>90% placement rate</span>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <strong>Expert Mentors</strong>
+                                <span>From top tech companies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Programming Course" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
- <!-- Hero Section -->
-<section class="software-hero">
-    <div class="container">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Master In-Demand Software Development Skills</h1>
-                <p class="lead">Accelerate your career with our industry-aligned curriculum, hands-on projects, and personalized mentorship from tech experts.</p>
-                <div class="cta-buttons">
-                    <a href="#courses" class="btn btn-primary">Explore Courses</a>
-                    <a href="#contact" class="btn btn-outline">Talk to an Advisor</a>
-                </div>
-                <div class="trust-markers">
-                    <span><i class="fas fa-check-circle"></i> Job-Ready Curriculum</span>
-                    <span><i class="fas fa-check-circle"></i> 1-on-1 Mentorship</span>
-                    <span><i class="fas fa-check-circle"></i> Portfolio Projects</span>
-                </div>
+  <!-- Courses Section -->
+  <section class="container">
+    <h2 class="section-title">Master Data Structures & Algorithms</h2>
+    <div class="course-grid">
+        <!-- Course 1 -->
+        <div class="course-card">
+            <div class="course-banner">
+                <i class="fab fa-python"></i>
+                <div class="new-ribbon">New</div>
             </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Developer working on code" loading="lazy">
+            <div class="course-content">
+                <h3>DSA with Python</h3>
+                <p>Master arrays, trees, graphs, and dynamic programming using Python. Includes 50+ LeetCode-style problems and interview prep.</p>
+                
+                <a href="fullStackDevelopment.html" class="btn" style="display: block; text-align: center;">View Curriculum</a>
             </div>
+        </div>
+        
+        <!-- Course 2 -->
+        <div class="course-card">
+            <div class="course-banner">
+                <i class="fab fa-java"></i>
+                <!-- New Ribbon Badge -->
+                <div class="new-ribbon">Most Popular</div>
+            </div>
+            <div class="course-content">
+                <h3>DSA with Java</h3>
+                <p>Learn object-oriented DSA, Big-O optimization, and system design for FAANG-level interviews. 8+ hands-on projects.</p>
+                <a href="#" class="btn" style="display: block; text-align: center;">View Curriculum</a>
+            </div>
+        </div>
+         <!-- Course 2 -->
+         <div class="course-card">
+            <div class="course-banner">
+                <i class="fab fa-cuttlefish"></i> <!-- 'C' icon -->
+<span style="font-weight: bold; margin-left: -4px">++</span>
+                <!-- New Ribbon Badge -->
+                <div class="new-ribbon">Comming Soon</div>
+            </div>
+            <div class="course-content">
+                <h3>DSA with C++</h3>
+                <p>Master memory management, STL, and competitive programming techniques. Ideal for ACM-ICPC aspirants.</p>
+                <a href="#" class="btn" style="display: block; text-align: center;">View Curriculum</a>
+            </div>
+        </div>
+        
+        
+    </div>
+</section>
+
+    <!-- Key Benefits -->
+<section class="container">
+    <h2 class="section-title">Why Choose Our Programming Courses?</h2>
+    <div class="benefits-grid">
+        <!-- Benefit 1: Certification -->
+        <div class="benefit-card">
+            <div class="benefit-icon">
+                <i class="fas fa-certificate"></i>
+            </div>
+            <h3>Industry-Recognized Certification</h3>
+            <p>Earn a certificate trusted by tech employers to boost your resume</p>
+        </div>
+        
+        <!-- Benefit 2: Expert Instructors -->
+        <div class="benefit-card">
+            <div class="benefit-icon">
+                <i class="fas fa-code"></i> <!-- Changed icon to "code" for programming focus -->
+            </div>
+            <h3>Senior Developer Instructors</h3>
+            <p>Learn from engineers who’ve built real-world systems at top tech companies</p>
+        </div>
+        
+        <!-- Benefit 3: Career Support -->
+        <div class="benefit-card">
+            <div class="benefit-icon">
+                <i class="fas fa-user-tie"></i> <!-- Professional icon -->
+            </div>
+            <h3>100% Career-Focused</h3>
+            <p>Get job-ready with mock interviews, GitHub reviews, and recruiter connections</p>
+        </div>
+        
+        <!-- Benefit 4: Hands-on Projects -->
+        <div class="benefit-card">
+            <div class="benefit-icon">
+                <i class="fas fa-laptop-code"></i> <!-- Coding-specific icon -->
+            </div>
+            <h3>Build Real Apps</h3>
+            <p>Develop portfolio projects like APIs, full-stack apps, and data pipelines</p>
         </div>
     </div>
 </section>
 
-    <!-- Courses Section -->
-    <section class="container">
-        <h2 class="section-title">Our Software Development Programs</h2>
-        <div class="course-grid">
-            <!-- Course 1 -->
-            <div class="course-card">
-                <div class="course-banner">
-                    <i class="fab fa-react"></i>
-                    <div class="new-ribbon">Most Popular</div>
-                </div>
-                <div class="course-content">
-                    <h3>Full-Stack Development</h3>
-                    <p>Master React, Node.js, MongoDB and build 10+ real projects</p>
-                    
-                    <a href="fullStackDevelopment.html" class="btn" style="display: block; text-align: center;">View Curriculum</a>
-                </div>
-            </div>
-            
-            <!-- Course 2 -->
-            <div class="course-card">
-                <div class="course-banner">
-                    <i class="fas fa-mobile-alt"></i>
-                    <!-- New Ribbon Badge -->
-                    <div class="new-ribbon">New</div>
-                </div>
-                <div class="course-content">
-                    <h3>Mobile App Development</h3>
-                    <p>Build iOS & Android apps with React Native and Firebase</p>
-                    <a href="flutter.html" class="btn" style="display: block; text-align: center;">View Curriculum</a>
-                </div>
-            </div>
-            
-            <!-- Course 3 -->
-            <div class="course-card">
-                <div class="course-banner">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
-                <div class="course-content">
-                    
-                    <h3>Python & Django</h3>
-                    <p>Complete backend development with Python ecosystem</p>
 
-                    <a href="#" class="btn" style="display: block; text-align: center;">View Curriculum</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Key Benefits -->
-    <section class="container">
-        <h2 class="section-title">Why Choose Our Software Courses?</h2>
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-certificate"></i>
-                </div>
-                <h3>Industry-Recognized Certificate</h3>
-                <p>Get certified upon completion with verifiable credentials</p>
-            </div>
-            
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                </div>
-                <h3>Expert Faculty</h3>
-                <p>Learn from developers with 5+ years industry experience</p>
-            </div>
-            
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <h3>Career Support</h3>
-                <p>Resume building, mock interviews, and placement assistance</p>
-            </div>
-            
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-project-diagram"></i>
-                </div>
-                <h3>Real Projects</h3>
-                <p>Build portfolio-worthy projects with code reviews</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="instructors">
+    <!-- Instructors Section -->
+    <section class="instructors-section">
         <div class="container">
-            <h2 class="section-title">Meet Your Instructors</h2>
+            <h2 class="section-title">Learn From Industry Experts</h2>
+            
             <div class="instructor-grid">
                 <!-- Instructor 1 -->
                 <div class="instructor-card">
                     <div class="instructor-header">
                         <div class="instructor-avatar">
                             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rajesh Kumar">
-                            <!-- <div class="company-logo">
-                                <img src="https://logo.clearbit.com/amazon.com" alt="Amazon">
-                            </div> -->
                         </div>
                         <div class="instructor-info">
                             <h3>Rajesh Kumar</h3>
-                            <p class="title">Senior Full-Stack Engineer</p>
+                            <p class="instructor-title">Senior Software Engineer (Ex-Amazon)</p>
                             <div class="expertise">
-                                <span>React</span>
-                                <span>Node.js</span>
-                                <span>AWS</span>
+                                <span>Python</span>
+                                <span>DSA</span>
+                                <span>System Design</span>
                             </div>
                         </div>
                     </div>
-                    <div class="instructor-bio">
-                        <p>10+ years experience building scalable web applications. Mentored 200+ students.</p>
-                    </div>
-                    <div class="instructor-stats">
-                        <div class="stat">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                            <span>5 Courses</span>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-star"></i>
-                            <span>4.9/5</span>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-users"></i>
-                            <span>1.2K Students</span>
-                        </div>
-                    </div>
+                    <p>10+ years experience in building scalable systems. Mentored 300+ students into top tech companies.</p>
                 </div>
-    
+                
                 <!-- Instructor 2 -->
                 <div class="instructor-card">
                     <div class="instructor-header">
                         <div class="instructor-avatar">
                             <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Sharma">
-                            <!-- <div class="company-logo">
-                                <img src="https://logo.clearbit.com/google.com" alt="Google">
-                            </div> -->
                         </div>
                         <div class="instructor-info">
                             <h3>Priya Sharma</h3>
-                            <p class="title">Data Science Lead</p>
+                            <p class="instructor-title">Full-Stack Developer (Google)</p>
                             <div class="expertise">
-                                <span>Python</span>
-                                <span>ML</span>
-                                <span>TensorFlow</span>
+                                <span>JavaScript</span>
+                                <span>React</span>
+                                <span>Node.js</span>
                             </div>
                         </div>
                     </div>
-                    <div class="instructor-bio">
-                        <p>Former AI researcher at Google. Specializes in making complex concepts accessible to beginners.</p>
-                    </div>
-                    <div class="instructor-stats">
-                        <div class="stat">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                            <span>3 Courses</span>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-star"></i>
-                            <span>4.8/5</span>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-users"></i>
-                            <span>850 Students</span>
-                        </div>
-                    </div>
+                    <p>Specializes in making complex web concepts simple and accessible to beginners.</p>
                 </div>
-    
+                
                 <!-- Instructor 3 -->
                 <div class="instructor-card">
                     <div class="instructor-header">
                         <div class="instructor-avatar">
                             <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Amit Patel">
-                            <!-- <div class="company-logo">
-                                <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft">
-                            </div> -->
                         </div>
                         <div class="instructor-info">
                             <h3>Amit Patel</h3>
-                            <p class="title">Cloud Architect</p>
+                            <p class="instructor-title">Java Architect (TCS)</p>
                             <div class="expertise">
-                                <span>Azure</span>
-                                <span>DevOps</span>
-                                <span>Docker</span>
+                                <span>Java</span>
+                                <span>Spring Boot</span>
+                                <span>Microservices</span>
                             </div>
                         </div>
                     </div>
-                    <div class="instructor-bio">
-                        <p>Helps students transition to cloud engineering with real-world infrastructure projects.</p>
-                    </div>
-                    <div class="instructor-stats">
-                        <div class="stat">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                            <span>4 Courses</span>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-star"></i>
-                            <span>4.7/5</span>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-users"></i>
-                            <span>950 Students</span>
-                        </div>
-                    </div>
+                    <p>Helped 500+ students crack service-based company interviews with Java expertise.</p>
                 </div>
             </div>
         </div>
     </section>
-    
 
-    <!-- Success Stories -->
-    <section class="success-stories">
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
         <div class="container">
-            <h2 class="section-title">Career Success Stories</h2>
-            <div class="stories-container">
-            <div class="story-card">
-                <div class="story-header">
-                    <div class="story-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div>
-                        <h3>Rahul Sharma</h3>
-                        <p>Placed at Amazon as SDE-1</p>
-                    </div>
-                </div>
-                <p>"The Full-Stack course gave me the exact skills needed to crack Amazon interviews. Built 8 real projects that became my interview talking points."</p>
-                <div class="course-meta" style="border: none; padding-bottom: 0;">
-                    <div class="meta-item">
-                        <i class="fas fa-coins"></i>
-                        <span>₹12 LPA</span>
-                    </div>
-                    <div class="meta-item">
-                        <i class="far fa-clock"></i>
-                        <span>6 Months</span>
-                    </div>
-                </div>
-            </div>
+            <h2 class="section-title">Student Success Stories</h2>
             
-            <div class="story-card">
-                <div class="story-header">
-                    <div class="story-avatar">
-                        <i class="fas fa-user"></i>
+            <div class="testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Rahul Sharma</h4>
+                            <p>Placed at Amazon</p>
+                        </div>
                     </div>
-                    <div>
-                        <h3>Priya Patel</h3>
-                        <p>Full-Stack Developer at Startup</p>
+                    <div class="testimonial-content">
+                        "The DSA course helped me crack Amazon interviews. The mock coding rounds were exactly like real interviews."
                     </div>
-                </div>
-                <p>"The hands-on approach helped me transition from manual testing to development. Got promoted within 3 months of course completion."</p>
-                <div class="course-meta" style="border: none; padding-bottom: 0;">
-                    <div class="meta-item">
-                        <i class="fas fa-coins"></i>
-                        <span>₹8 LPA</span>
-                    </div>
-                    <div class="meta-item">
-                        <i class="far fa-clock"></i>
-                        <span>4 Months</span>
-                    </div>
-                </div>
-            </div>
-            <div class="story-card">
-                <div class="story-header">
-                    <div class="story-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div>
-                        <h3>Priya Patel</h3>
-                        <p>Full-Stack Developer at Startup</p>
+                    <div class="testimonial-meta">
+                        <span><i class="fas fa-coins"></i> ₹18 LPA</span>
+                        <span><i class="fas fa-clock"></i> 6 Months</span>
                     </div>
                 </div>
-                <p>"The hands-on approach helped me transition from manual testing to development. Got promoted within 3 months of course completion."</p>
-                <div class="course-meta" style="border: none; padding-bottom: 0;">
-                    <div class="meta-item">
-                        <i class="fas fa-coins"></i>
-                        <span>₹8 LPA</span>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Neha Patel</h4>
+                            <p>Full-Stack Developer</p>
+                        </div>
                     </div>
-                    <div class="meta-item">
-                        <i class="far fa-clock"></i>
-                        <span>4 Months</span>
+                    <div class="testimonial-content">
+                        "The MERN stack projects became my portfolio highlights. Got 3 offers within 2 months of course completion."
+                    </div>
+                    <div class="testimonial-meta">
+                        <span><i class="fas fa-coins"></i> ₹10 LPA</span>
+                        <span><i class="fas fa-clock"></i> 4 Months</span>
                     </div>
                 </div>
-            </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Arjun Singh</h4>
+                            <p>Java Developer</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        "The Java course covered everything TCS asked in interviews. Got placed with 7 LPA package right after college."
+                    </div>
+                    <div class="testimonial-meta">
+                        <span><i class="fas fa-coins"></i> ₹7 LPA</span>
+                        <span><i class="fas fa-clock"></i> 3 Months</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="container">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>What's the difference between Full-Stack and Backend courses?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Our Full-Stack program covers both frontend (React) and backend (Node.js) development, while the Backend specialization focuses only on server-side technologies like databases, APIs, and cloud deployment.</p>
-                </div>
-            </div>
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Programming Course FAQs</h2>
             
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Do I need prior coding experience?</span>
-                    <i class="fas fa-chevron-down"></i>
+            <div class="faq-container">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Which programming language should I start with?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Python</strong> is ideal for beginners due to its readability. <strong>JavaScript</strong> is best for web development, while <strong>Java/C++</strong> are essential for college placements and competitive programming. We’ll help you choose based on your goals!</p>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>For beginner courses like Python and Web Fundamentals, no prior experience is needed. Intermediate/Advanced courses require basic programming knowledge.</p>
+                
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do I need prior coding experience?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Not at all!</strong> Our beginner-friendly courses start from the basics. For advanced courses (like Data Structures), basic programming knowledge is recommended.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How are your courses different from YouTube tutorials?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer:</p>
+                        <ul>
+                            <li><strong>Structured curriculum</strong> designed by industry experts</li>
+                            <li><strong>Code reviews</strong> from senior developers</li>
+                            <li><strong>Real-world projects</strong> for your portfolio</li>
+                            <li><strong>Dedicated mentorship</strong> and career support</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What if I get stuck during the course?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We provide:</p>
+                        <ul>
+                            <li>24/7 <strong>community support</strong> (Discord/forum)</li>
+                            <li><strong>Live Q&A sessions</strong> with instructors</li>
+                            <li><strong>Debugging assistance</strong> for your projects</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>What kind of certificate will I receive?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>You'll get a digital certificate with unique verification code, recognized by our hiring partners. Certificates include your project portfolio links.</p>
-                </div>
-            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; padding: 80px 0; text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 2.2rem; margin-bottom: 20px;">Ready to Start Your Programming Journey?</h2>
+            <p style="max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem;">Join thousands of students who transformed their careers with our courses.</p>
+            <a href="#" class="primary-btn" style="display: inline-flex;">
+                <i class="fas fa-laptop-code"></i> Enroll Now
+            </a>
         </div>
     </section>
     <footer>
@@ -1334,7 +1388,6 @@
             this.reset();
         });
     </script>
-
     <script>
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-btn');
@@ -1365,7 +1418,7 @@
             });
         });
         
-        // Optional: Animate course cards on scroll
+        // Animate course cards on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
