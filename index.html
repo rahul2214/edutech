@@ -311,6 +311,54 @@
     .badge i {
         color: #4fc3f7;
     }
+    .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .course-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-img {
+            height: 180px;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-weight: bold;
+        }
+        
+        .course-content {
+            padding: 20px;
+        }
+        
+        .course-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        .rating {
+            color: #f59e0b;
+            margin: 10px 0;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            color: #64748b;
+        }
     
     /* Image Content */
     .image-wrapper {
@@ -883,95 +931,86 @@
         </div>
     </section>
 
-    <section class="categories">
-        <div class="container">
-            <h2 class="section-title">Explore Course Categories</h2>
-            <div class="category-container">
-                <!-- Category 1 -->
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Software Development</h3>
-                    <p>Master full-stack development with hands-on projects and real-world applications.</p>
-                    <a href="SoftwareDevelopmentCourses.html" class="explore-btn">Explore</a>
+   <!-- Courses Grid Section -->
+   <section class="courses">
+    <div class="container">
+        <h2 class="section-title">Our Popular Courses</h2>
+        <div class="course-grid">
+            <!-- Course Card 1 -->
+            <div class="course-card" data-level="beginner" data-duration="3-6" data-price="10000-20000" data-category="web">
+                <div class="course-img" style="background: #bfdbfe; color: #1e40af;">
+                   MERN Full-Stack Development
                 </div>
-                
-                <!-- Category 2 -->
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-code"></i>
+                <div class="course-content">
+                    <h3>MERN Full-Stack Development Bootcamp</h3>
+                    <p>Master frontend and backend technologies to build complete web applications.</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span> (124)</span>
                     </div>
-                    <h3>Programming Courses</h3>
-                    <p>Learn Python, Java, C++ and more with our beginner to advanced courses.</p>
-                    <a href="ProgrammingCourses.html" class="explore-btn">Explore</a>
-                </div>
-                
-                <!-- Category 3 -->
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-chart-line"></i>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 6 Months</span>
+                        <span>₹2,999</span>
                     </div>
-                    <h3>Data Science & Analytics</h3>
-                    <p>Become a data professional with our AI/ML and data visualization courses.</p>
-                    <a href="DataScienceAndMachineLearning.html" class="explore-btn">Explore</a>
-                </div>
-                
-                <!-- Category 4 -->
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Cyber Security</h3>
-                    <p>Learn ethical hacking, network security and penetration testing.</p>
-                    <a href="cyberSecurity.html" class="explore-btn">Explore</a>
+                    <a href="fullStackDevelopment.html" class="btn" style="display: block; text-align: center; margin-top: 15px;">View Details</a>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Popular Courses Section -->
-    <section class="courses" id="courses">
-        <div class="container">
-            <h2 class="section-title">Our Popular Courses</h2>
-            <div class="course-grid">
-                <div class="course-card">
-                    <div class="course-img">Full-Stack Development</div>
-                    <div class="course-content">
-                        <h3>Full-Stack Development</h3>
-                        <p>Master frontend and backend technologies to build complete web applications from scratch.</p>
-                        <div class="course-meta">
-                            <span><i class="far fa-clock"></i> 6 Months</span>
-                            <span>₹2,999</span>
-                        </div>
-                    </div>
+            
+            <!-- Course Card 2 -->
+            <div class="course-card" data-level="intermediate" data-duration="3-6" data-price="20000+" data-category="data">
+                <div class="course-img" style="background: #bbf7d0; color: #166534;">
+                    Data Science and Machine Learning
                 </div>
-                <div class="course-card">
-                    <div class="course-img">Data Science</div>
-                    <div class="course-content">
-                        <h3>Data Science</h3>
-                        <p>Learn Python, Machine Learning, and Data Analysis to become a data science professional.</p>
-                        <div class="course-meta">
-                            <span><i class="far fa-clock"></i> 6 Months</span>
-                            <span>₹2,999</span>
-                        </div>
+                <div class="course-content">
+                    <h3>Data Science and Machine Learning</h3>
+                    <p>Learn Python, Machine Learning, and Data Analysis to become a data scientist.</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span> (89)</span>
                     </div>
-                </div>
-                <div class="course-card">
-                    <div class="course-img">AI/ML</div>
-                    <div class="course-content">
-                        <h3>Artificial Intelligence</h3>
-                        <p>Build intelligent systems with Python, TensorFlow, and neural network architectures.</p>
-                        <div class="course-meta">
-                            <span><i class="far fa-clock"></i> 6 Months</span>
-                            <span>₹2,999</span>
-                        </div>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 6 Months</span>
+                        <span>₹2,999</span>
                     </div>
+                    <a href="DataScienceAndMachineLearning.html" class="btn" style="display: block; text-align: center; margin-top: 15px;">View Details</a>
                 </div>
             </div>
+            
+             <!-- Course Card 3 -->
+             <div class="course-card" data-level="advanced" data-duration="6+" data-price="20000+" data-category="ai">
+                <div class="course-img" style="background: #fbcfe8; color: #831843;">
+                    Mobile App Development
+                </div>
+                <div class="course-content">
+                    <h3>Mobile App Development</h3>
+                    <p>Create cross-platform apps with Flutter—one codebase for iOS, Android, and more.</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span> (56)</span>
+                    </div>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 6 Months</span>
+                        <span>₹2,999</span>
+                    </div>
+                    <a href="flutter.html" class="btn" style="display: block; text-align: center; margin-top: 15px;">View Details</a>
+                </div>
+            </div>
+            
         </div>
-    </section>
-    
+    </div>
+</section>
     <!-- Testimonials Section -->
     <section class="testimonials">
         <div class="container">
